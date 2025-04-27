@@ -371,7 +371,7 @@ public class Monster : MonoBehaviour
                 _animator.SetTrigger("Jump");//_animator.Play("MFH Jump");
                 Vector2 vec2 = new Vector2(x * Mathf.Abs(JumpHeight - 1.0f) * .5f, JumpHeight);
                 vec2.Normalize();
-                _rigidbody.velocity = vec2 * JumpForce;
+                _rigidbody.linearVelocity = vec2 * JumpForce;
                 jump_timer = 0f;
                 is_grounded = false;
             }
@@ -402,7 +402,7 @@ public class Monster : MonoBehaviour
             is_hurt = true;
             
             _animator.SetTrigger("Hurt");
-            _rigidbody.velocity = new Vector2(x_push_dir * EnemyHitPushForce, EnemyHitPushForce * .5f);
+            _rigidbody.linearVelocity = new Vector2(x_push_dir * EnemyHitPushForce, EnemyHitPushForce * .5f);
             getDmg(PlayerPrefs.GetFloat("AvatarDmg", 50f));
         }
 

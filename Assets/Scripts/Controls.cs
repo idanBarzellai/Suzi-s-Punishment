@@ -182,13 +182,13 @@ public class Controls : MonoBehaviour
 
         if (Mathf.Abs(dir.x) < 1.2f && dir.y > 0) // from 1.35 to 1.2
         {
-            _rigidbody.velocity = calcBallisticVelocityVector2(transform.position, target);
+            _rigidbody.linearVelocity = calcBallisticVelocityVector2(transform.position, target);
         }
         else if (Mathf.Abs(dir.x) < 1.2f && dir.y < 0) // from 1.35 to 1.2
         {
             if (ground.gameObject.layer == 3)
             {
-                _rigidbody.velocity = calcBallisticVelocityVector2(transform.position, target);
+                _rigidbody.linearVelocity = calcBallisticVelocityVector2(transform.position, target);
             }
         }
         else if (higher)
@@ -197,11 +197,11 @@ public class Controls : MonoBehaviour
             Vector2 new_velocity = calcBallisticVelocityVector(transform.position, target, JumpAngle);
             if (Mathf.Abs(target.y - transform.position.y) >= 3f)
                 jump_added_val = 4.5f;
-            _rigidbody.velocity = new Vector2(new_velocity.x * 0.7f, new_velocity.y + jump_added_val);
+            _rigidbody.linearVelocity = new Vector2(new_velocity.x * 0.7f, new_velocity.y + jump_added_val);
         }
         else
         {
-            _rigidbody.velocity = calcBallisticVelocityVector(transform.position, target, JumpAngle);
+            _rigidbody.linearVelocity = calcBallisticVelocityVector(transform.position, target, JumpAngle);
         }
 
     }
@@ -213,7 +213,7 @@ public class Controls : MonoBehaviour
         {
             if (cp.normal.y >= 0)
             {
-                _rigidbody.velocity = new Vector2();
+                _rigidbody.linearVelocity = new Vector2();
             }
 
             if (cp.collider.CompareTag("Ground"))
@@ -374,7 +374,7 @@ public class Controls : MonoBehaviour
             {
                 _animator.SetTrigger("Hurt");
             }
-            _rigidbody.velocity = new Vector2(x_push_dir * x_push, y_push);
+            _rigidbody.linearVelocity = new Vector2(x_push_dir * x_push, y_push);
         }
     }
 

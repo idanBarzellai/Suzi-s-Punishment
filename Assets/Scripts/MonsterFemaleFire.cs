@@ -37,7 +37,7 @@ public class MonsterFemaleFire : Monster
 
         if (!clips[1].isPlaying)
             clips[1].Play();
-        _rigidbody.velocity = new Vector2((int)transform.localScale.x * 15f, 0);
+        _rigidbody.linearVelocity = new Vector2((int)transform.localScale.x * 15f, 0);
 
         StartCoroutine(set_isAttacking_false(FramesAfterAttack));
     }
